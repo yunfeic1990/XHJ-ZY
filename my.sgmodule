@@ -1,0 +1,123 @@
+#!name=cn直連
+#!desc=国内直连域名清单 + 直连 DNS；已把会被直连规则盖掉的广告拦截规则排在前面
+
+[General]
+direct-dns-server = https://dns.alidns.com/dns-query, https://doh.pub/dns-query
+
+[Rule]
+# 局域网/私有地址（IP 优先）
+RULE-SET,https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Shadowrocket/Lan/Lan.list,DIRECT
+
+# ===== 先拦截：以下广告/统计域名会落在后面的直连范围内，必须排在直连之前 =====
+DOMAIN-KEYWORD,bdstatic,REJECT
+DOMAIN-SUFFIX,analytics.163.com,REJECT
+DOMAIN,httpdns.music.163.com,REJECT
+DOMAIN,lofter.httpdns.c.163.com,REJECT
+DOMAIN,music.httpdns.c.163.com,REJECT
+DOMAIN-SUFFIX,caclick.baidu.com,REJECT
+DOMAIN-SUFFIX,cpu.baidu.com,REJECT
+DOMAIN-SUFFIX,hm.baidu.com,REJECT
+DOMAIN,hmma.baidu.com,REJECT
+DOMAIN,hmt.baidu.com,REJECT
+DOMAIN-SUFFIX,httpdns.baidu.com,REJECT
+DOMAIN-SUFFIX,httpsdns.baidu.com,REJECT
+DOMAIN,m.baidu.com,REJECT
+DOMAIN-SUFFIX,mobads.baidu.com,REJECT
+DOMAIN,tongji.baidu.com,REJECT
+DOMAIN,httpdns.bilivideo.com,REJECT
+DOMAIN-SUFFIX,dm.bytedance.com,REJECT
+DOMAIN-SUFFIX,bdsp.x.jd.com,REJECT
+DOMAIN,dns.jd.com,REJECT
+DOMAIN-SUFFIX,kepler.jd.com,REJECT
+DOMAIN-SUFFIX,keplerapi.jd.com,REJECT
+DOMAIN-SUFFIX,log.jd.com,REJECT
+DOMAIN-SUFFIX,mapi.m.jd.com,REJECT
+DOMAIN-SUFFIX,policy.jd.com,REJECT
+DOMAIN-SUFFIX,stat.m.jd.com,REJECT
+DOMAIN,httpdns.n.netease.com,REJECT
+DOMAIN-SUFFIX,a3.pstatp.com,REJECT
+DOMAIN-SUFFIX,dm.pstatp.com,REJECT
+DOMAIN-SUFFIX,p3.pstatp.com,REJECT
+DOMAIN-SUFFIX,s1.pstatp.com,REJECT
+DOMAIN-SUFFIX,s2.pstatp.com,REJECT
+DOMAIN-SUFFIX,s3.pstatp.com,REJECT
+DOMAIN-SUFFIX,s3a.pstatp.com,REJECT
+DOMAIN-SUFFIX,ad.qq.com,REJECT
+DOMAIN-SUFFIX,android.bugly.qq.com,REJECT
+DOMAIN,applog.reader.qq.com,REJECT
+DOMAIN-SUFFIX,bugly.qq.com,REJECT
+DOMAIN,dns.weixin.qq.com,REJECT
+DOMAIN,gatherer.m.qq.com,REJECT
+DOMAIN-SUFFIX,gdt.qq.com,REJECT
+DOMAIN-SUFFIX,mdt.qq.com,REJECT
+DOMAIN-SUFFIX,pingma.qq.com,REJECT
+DOMAIN-SUFFIX,rmonitor.qq.com,REJECT
+DOMAIN-SUFFIX,szmg.qq.com,REJECT
+DOMAIN-SUFFIX,tajs.qq.com,REJECT
+DOMAIN,unitelogreport.reader.qq.com,REJECT
+DOMAIN-SUFFIX,bds.snssdk.com,REJECT
+DOMAIN-SUFFIX,extlog.snssdk.com,REJECT
+DOMAIN-SUFFIX,sdfp.snssdk.com,REJECT
+DOMAIN-SUFFIX,ad.toutiao.com,REJECT
+DOMAIN-SUFFIX,adshare.toutiao.com,REJECT
+DOMAIN-SUFFIX,dm.toutiao.com,REJECT
+DOMAIN-SUFFIX,analytics.126.net,REJECT
+
+# ===== 再直连 =====
+# --- Bilibili B站 ---
+DOMAIN-SUFFIX,bilibili.com,DIRECT
+DOMAIN-SUFFIX,bilivideo.com,DIRECT
+DOMAIN-SUFFIX,bilivideo.cn,DIRECT
+DOMAIN-SUFFIX,hdslb.com,DIRECT
+DOMAIN-SUFFIX,biliapi.net,DIRECT
+DOMAIN-SUFFIX,biliapi.com,DIRECT
+DOMAIN-SUFFIX,acgvideo.com,DIRECT
+DOMAIN-SUFFIX,b23.tv,DIRECT
+
+# --- 115网盘 ---
+DOMAIN-SUFFIX,115.com,DIRECT
+DOMAIN-SUFFIX,115cdn.com,DIRECT
+DOMAIN-SUFFIX,anwang.com,DIRECT
+
+# --- 阅文、QQ阅读与腾讯生态 ---
+DOMAIN-SUFFIX,qq.com,DIRECT
+DOMAIN-SUFFIX,ywdoc.com,DIRECT
+DOMAIN-SUFFIX,shp.qpic.cn,DIRECT
+DOMAIN-SUFFIX,qidian.com,DIRECT
+DOMAIN-SUFFIX,gtimg.com,DIRECT
+DOMAIN-KEYWORD,qqread,DIRECT
+DOMAIN-KEYWORD,yuewen,DIRECT
+DOMAIN-KEYWORD,geetest,DIRECT
+
+# --- 百度 ---
+DOMAIN-SUFFIX,baidu.com,DIRECT
+DOMAIN-SUFFIX,baidupcs.com,DIRECT
+DOMAIN-SUFFIX,bdimg.com,DIRECT
+
+# --- 字节跳动 / 抖音 / 头条 ---
+DOMAIN-SUFFIX,bytedance.com,DIRECT
+DOMAIN-SUFFIX,snssdk.com,DIRECT
+DOMAIN-SUFFIX,pstatp.com,DIRECT
+DOMAIN-SUFFIX,douyin.com,DIRECT
+DOMAIN-SUFFIX,amemv.com,DIRECT
+DOMAIN-SUFFIX,iesdouyin.com,DIRECT
+DOMAIN-SUFFIX,toutiao.com,DIRECT
+DOMAIN-SUFFIX,ixigua.com,DIRECT
+
+# --- 京东 ---
+DOMAIN-SUFFIX,jd.com,DIRECT
+DOMAIN-SUFFIX,360buyimg.com,DIRECT
+DOMAIN-SUFFIX,jdpay.com,DIRECT
+
+# --- 拼多多 ---
+DOMAIN-SUFFIX,pinduoduo.com,DIRECT
+DOMAIN-SUFFIX,yangkeduo.com,DIRECT
+
+# --- 新浪 / 微博 / 网易 ---
+DOMAIN-SUFFIX,sina.com.cn,DIRECT
+DOMAIN-SUFFIX,sinaimg.cn,DIRECT
+DOMAIN-SUFFIX,weibo.com,DIRECT
+DOMAIN-SUFFIX,weibocdn.com,DIRECT
+DOMAIN-SUFFIX,163.com,DIRECT
+DOMAIN-SUFFIX,netease.com,DIRECT
+DOMAIN-SUFFIX,126.net,DIRECT
