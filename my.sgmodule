@@ -5,10 +5,8 @@
 direct-dns-server = https://dns.alidns.com/dns-query, https://doh.pub/dns-query
 
 [Rule]
-# 局域网/私有地址（IP 优先）
-RULE-SET,https://fastly.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Shadowrocket/Lan/Lan.list,DIRECT
 
-# ===== 再直连 =====
+# ===== 直连 =====
 # --- Bilibili B站 ---
 DOMAIN-SUFFIX,bilibili.com,DIRECT
 DOMAIN-SUFFIX,bilivideo.com,DIRECT
