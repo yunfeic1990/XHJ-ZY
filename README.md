@@ -13,7 +13,7 @@
 ## 配置直链
 
 ```
-https://raw.githubusercontent.com/yunfeic1990/XHJ-ZY/main/分流配置⛅️.conf
+https://raw.githubusercontent.com/yunfeic1990/XHJ-ZY/main/自动测速配置⛅️.conf
 ```
 
 ## 直连模块
