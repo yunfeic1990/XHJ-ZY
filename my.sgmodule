@@ -240,6 +240,10 @@ IP-CIDR6,240e:928:1400:10::25/128,REJECT,no-resolve
 # ==================================
 # 二、域名规则：国外
 # ==================================
+# 拦截 iCloud 私密中继，让 iOS 自动回退到普通连接，避免绕过代理分流
+# 必须用 DOMAIN 精确匹配，不要用 DOMAIN-SUFFIX,icloud.com，否则会影响 iCloud 同步和备份
+DOMAIN,mask.icloud.com,REJECT
+DOMAIN,mask-h2.icloud.com,REJECT
 # --- Google / Firebase ---
 DOMAIN-SUFFIX,admob.com,REJECT
 DOMAIN-SUFFIX,app-measurement.com,REJECT
