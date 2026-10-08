@@ -237,13 +237,23 @@ IP-CIDR6,2402:4e00:1900:1700:0:9554:1ad9:c3a/128,REJECT,no-resolve
 IP-CIDR6,2402:db40:5100:1011::5/128,REJECT,no-resolve
 IP-CIDR6,240e:928:1400:10::25/128,REJECT,no-resolve
 
-# ==================================
-# 二、域名规则：国外
-# ==================================
 # 拦截 iCloud 私密中继，让 iOS 自动回退到普通连接，避免绕过代理分流
 # 必须用 DOMAIN 精确匹配，不要用 DOMAIN-SUFFIX,icloud.com，否则会影响 iCloud 同步和备份
 DOMAIN,mask.icloud.com,REJECT
 DOMAIN,mask-h2.icloud.com,REJECT
+#静默丢弃、苹果广告、苹果统计、谷歌广告联盟，Firebase 后台日志，奔溃日志
+DOMAIN-SUFFIX,app-analytics-services.com,REJECT-DROP
+DOMAIN-SUFFIX,app-ads-services.com,REJECT-DROP
+DOMAIN-SUFFIX,doubleclick.net,REJECT-DROP
+DOMAIN,firebaselogging-pa.googleapis.com,REJECT-DROP
+DOMAIN-SUFFIX,crashlytics.com,REJECT-DROP
+DOMAIN,analytics.twitter.com,REJECT-DROP
+DOMAIN,probe.twitter.com,REJECT-DROP
+DOMAIN,xp.apple.com,REJECT-DROP
+
+# ==================================
+# 二、域名规则：国外
+# ==================================
 # --- Google / Firebase ---
 DOMAIN-SUFFIX,admob.com,REJECT
 DOMAIN-SUFFIX,app-measurement.com,REJECT
@@ -258,7 +268,6 @@ DOMAIN-SUFFIX,pagead-tpc.l.google.com,REJECT
 DOMAIN-SUFFIX,mobileads.google.com,REJECT
 DOMAIN-SUFFIX,pagead.google.com,REJECT
 DOMAIN-SUFFIX,google-analytics.com,REJECT
-DOMAIN-SUFFIX,firebaselogging-pa.googleapis.com,REJECT
 DOMAIN-SUFFIX,blaaaa12.googlecode.com,REJECT
 DOMAIN-SUFFIX,googlecommerce.com,REJECT
 DOMAIN-SUFFIX,badad.googleplex.com,REJECT
@@ -273,7 +282,6 @@ DOMAIN-SUFFIX,gcdn.2mdn.net,REJECT
 DOMAIN-SUFFIX,s0.2mdn.net,REJECT
 DOMAIN-SUFFIX,s1.2mdn.net,REJECT
 DOMAIN-SUFFIX,youtube.112.2o7.net,REJECT
-DOMAIN-SUFFIX,doubleclick.net,REJECT
 DOMAIN,imasdk.googleapis.com,REJECT
 DOMAIN,safebrowsing.googleapis.com,REJECT
 DOMAIN,ads.youtube.com,REJECT
@@ -327,7 +335,6 @@ DOMAIN,ca.iadsdk.apple.com,REJECT
 DOMAIN,metrics.apple.com,REJECT
 DOMAIN,support.metrics.apple.com,REJECT
 DOMAIN,securemetrics.apple.com,REJECT
-DOMAIN,xp.apple.com,REJECT
 # --- Adobe ---
 DOMAIN-SUFFIX,3dns-2.adobe.com,REJECT
 DOMAIN-SUFFIX,3dns-3.adobe.com,REJECT
@@ -387,7 +394,6 @@ DOMAIN-SUFFIX,yads.yahoo.co.jp,REJECT
 DOMAIN-SUFFIX,facebook.net,REJECT
 DOMAIN,an.facebook.com,REJECT
 DOMAIN,analytics.twitter.com,REJECT
-DOMAIN,probe.twitter.com,REJECT
 # --- Unity / 游戏广告 SDK ---
 DOMAIN-SUFFIX,inmobi.com,REJECT
 DOMAIN-SUFFIX,ironsrc.com,REJECT
@@ -427,8 +433,6 @@ DOMAIN-SUFFIX,stbuttons.click,REJECT
 DOMAIN-SUFFIX,adnxs.com,REJECT
 DOMAIN-SUFFIX,adsafeprotected.com,REJECT
 DOMAIN-SUFFIX,c.algovid.com,REJECT
-DOMAIN-SUFFIX,app-ads-services.com,REJECT
-DOMAIN-SUFFIX,app-analytics-services.com,REJECT
 DOMAIN-SUFFIX,t.cr-nielsen.com,REJECT
 DOMAIN-SUFFIX,criteo.com,REJECT
 DOMAIN-SUFFIX,ads.genieessp.com,REJECT
@@ -498,6 +502,12 @@ DOMAIN-KEYWORD,vidoza,REJECT
 # ==================================
 # 三、域名规则：国内
 # ==================================
+
+# ===== 知乎拦截规则 =====
+DOMAIN-SUFFIX,zhihu-web-analytics.zhihu.com,REJECT
+# 知乎埋点/数据上报
+DOMAIN-SUFFIX,sugar.zhihu.com,REJECT
+
 # --- HTTPDNS（防 App 绕过 DNS） ---
 DOMAIN-SUFFIX,httpdns.baidu.com,REJECT
 DOMAIN-SUFFIX,httpdns.baidubce.com,REJECT
